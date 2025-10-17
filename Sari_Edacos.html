@@ -224,25 +224,10 @@
                     valor = valor % listaCedulas[cont];
                     cont++;
                 }
-
-                qtdTotalPraia += qtdPraia;
-                qtdTotalJardim += qtdJardim;
-                qtdTotalPesca += qtdPesca;
-                valorTotalPraia += valorPraia;
-                valorTotalJardim += valorJardim;
-                valorTotalPesca += valorPesca;
-                totalCadeira = qtdTotalPraia + qtdTotalJardim + qtdTotalPesca;
-                totalVenda = valorTotalPraia + valorTotalJardim + valorTotalPesca;
-                percentualCadeiraPraia = (qtdTotalPraia / totalCadeira * 100);
-                percentualVendaPraia = (valorTotalPraia / totalVenda * 100);
-                percentualCadeiraJardim = (qtdTotalJardim / totalCadeira * 100);
-                percentualVendaJardim = (valorTotalJardim / totalVenda * 100);
-                percentualCadeiraPesca = (qtdTotalPesca / totalCadeira * 100);
-                percentualVendaPesca = (valorTotalPesca / totalVenda * 100);
-
-
+                
                 // Critério de aceite da venda de cadeira
                 if ((salario >= salarioInicial && salario <= salarioFinal && valorTotal > (salario * 0.305)) || (salario > salarioFinal && valorTotal > (salario * 0.2075))) {
+                    btn_encerrar.style.display = "none";
                     if (salario >= salarioInicial && salario <= salarioFinal && valorTotal > (salario * 0.305)) {
                         div_alerta2.innerHTML = "<br>Critério de venda das cadeiras não cumprido: Valor total ultrapassa 30,5% do seu salário.<br><br>Deseja inserir um novo intervalo de salário ou realizar uma nova compra?<br><br><button onclick='voltar1()'>Novo Intervalo de Salário</button><button onclick='voltar2()'>Nova Compra</button>";
                     }
@@ -251,6 +236,20 @@
                     }
                 }
                 else {
+                    qtdTotalPraia += qtdPraia;
+                    qtdTotalJardim += qtdJardim;
+                    qtdTotalPesca += qtdPesca;
+                    valorTotalPraia += valorPraia;
+                    valorTotalJardim += valorJardim;
+                    valorTotalPesca += valorPesca;
+                    totalCadeira = qtdTotalPraia + qtdTotalJardim + qtdTotalPesca;
+                    totalVenda = valorTotalPraia + valorTotalJardim + valorTotalPesca;
+                    percentualCadeiraPraia = (qtdTotalPraia / totalCadeira * 100);
+                    percentualVendaPraia = (valorTotalPraia / totalVenda * 100);
+                    percentualCadeiraJardim = (qtdTotalJardim / totalCadeira * 100);
+                    percentualVendaJardim = (valorTotalJardim / totalVenda * 100);
+                    percentualCadeiraPesca = (qtdTotalPesca / totalCadeira * 100);
+                    percentualVendaPesca = (valorTotalPesca / totalVenda * 100);
                     // Faz o botão encerrar aparecer
                     btn_encerrar.style.display = "block";
                     div_extrato.innerHTML = "<h3>Extrato</h3>Nome: " + 
