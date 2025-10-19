@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doceria Gourmet</title>
+</head>
+<body style="font-family: Arial;">
+    <h2>Doceria Gourmet</h2>
+
+    <h3><u>Macarons</u></h3>
+    <label>Quantidade:
+        <input type="number" id="ipt_qtdMacarons"><br>
+    </label>
+    <label>Valor (R$):
+        <input type="number" id="ipt_valorMacarons"><br>
+    </label>
+
+    <h3><u>Brigadeiros</u></h3>
+    <label>Quantidade:
+        <input type="number" id="ipt_qtdBrigadeiros"><br>
+    </label>
+    <label>Valor (R$):
+        <input type="number" id="ipt_valorBrigadeiros"><br>
+    </label>
+
+    <h3><u>Cupcakes</u></h3>
+    <label>Quantidade:
+        <input type="number" id="ipt_qtdCupcakes"><br>
+    </label>
+    <label>Valor (R$):
+        <input type="number" id="ipt_valorCupcakes"><br>
+    </label>
+
+    <h3><u>Cheesecakes</u></h3>
+    <label>Quantidade:
+        <input type="number" id="ipt_qtdCheesecakes"><br>
+    </label>
+    <label>Valor (R$):
+        <input type="number" id="ipt_valorCheesecakes"><br>
+    </label>
+
+    <br>
+    <button onclick="verificar()">Verificar Vendas</button><br>
+    <br>
+
+    <div id="div_mensagem"></div>
+
+    <script>
+        function verificar() {
+            // Variável de controle e mensagem
+            var cont = 1;
+            var mensagem = "";
+
+            // Variáveis dos Macarons
+            var qtdMacarons = Number(ipt_qtdMacarons.value);
+            var valorMacarons = Number(ipt_valorMacarons.value);
+            var contMacarons = qtdMacarons;
+
+            // Variáveis dos Brigadeiros
+            var qtdBrigadeiros = Number(ipt_qtdBrigadeiros.value);
+            var valorBrigadeiros = Number(ipt_valorBrigadeiros.value);
+            var contBrigadeiros = qtdBrigadeiros;
+
+            // Variáveis dos Cupcakes
+            var qtdCupcakes = Number(ipt_qtdCupcakes.value);
+            var valorCupcakes = Number(ipt_valorCupcakes.value);
+            var contCupcakes = qtdCupcakes;
+
+            // Variáveis dos Cheesecakes
+            var qtdCheesecakes = Number(ipt_qtdCheesecakes.value);
+            var valorCheesecakes = Number(ipt_valorCheesecakes.value);
+            var contCheesecakes = qtdCheesecakes;
+
+            // Variáveis do total de doces e o valor total da venda
+            var total = qtdMacarons + qtdBrigadeiros + qtdCupcakes + qtdCheesecakes;
+            var venda = (qtdMacarons * valorMacarons) + (qtdBrigadeiros * valorBrigadeiros) + (qtdCupcakes * valorCupcakes) + (qtdCheesecakes * valorCheesecakes);
+
+
+            if (qtdMacarons < 0 || valorMacarons < 0 || qtdBrigadeiros < 0 || valorBrigadeiros < 0 || qtdCupcakes < 0 || valorCupcakes < 0 || qtdCheesecakes < 0 || valorCheesecakes < 0) {
+                // Validação Macarons
+                if (qtdMacarons < 0) {
+                    mensagem += "A quantidade de Macarons não pode ser negativa!<br><br>";
+                }
+                if (valorMacarons < 0) {
+                    mensagem += "O valor dos Macarons não pode ser negativo!<br><br>";
+                }
+
+                // Validação Brigadeiros
+                if (qtdBrigadeiros < 0) {
+                    mensagem += "A quantidade de Brigadeiros não pode ser negativa!<br><br>";
+                }
+                if (valorBrigadeiros < 0) {
+                    mensagem += "O valor dos Brigadeiros não pode ser negativo!<br><br>";
+                }
+
+                // Validação Cupcakes
+                if (qtdCupcakes < 0) {
+                    mensagem += "A quantidade de Cupcakes não pode ser negativa!<br><br>";
+                }
+                if (valorCupcakes < 0) {
+                    mensagem += "O valor dos Cupcakes não pode ser negativo!<br><br>";
+                }
+
+                // Validação Cheesecakes
+                if (qtdCheesecakes < 0) {
+                    mensagem += "A quantidade de Cheesecakes não pode ser negativa!<br><br>";
+                }
+                if (valorCheesecakes < 0) {
+                    mensagem += "O valor dos Cheesecakes não pode ser negativo!<br><br>";
+                }
+
+                div_mensagem.innerHTML = mensagem;
+            }
+            else {
+                
+                while (cont <= total) {
+                    if (contMacarons != 0) {
+                        mensagem += "Venda " + cont + " - <img src='https://guiadacozinha.com.br/wp-content/uploads/2021/08/macaron-768x619.jpg' height='100px' width='100px'> - " + valorMacarons.toLocaleString("pt-BR", {style:"currency", currency:"BRL"}) + "<br><br>";
+                        contMacarons--;
+                    }
+                    else if (contBrigadeiros != 0) {
+                        mensagem += "Venda " + cont + " - <img src='https://xamegobom.com.br/wp-content/uploads/2017/05/brigadeiro-manga.jpg' height='100px' width='100px'> - " + valorBrigadeiros.toLocaleString("pt-BR", {style:"currency", currency:"BRL"}) + "<br><br>";
+                        contBrigadeiros--;
+                    }
+                    else if (contCupcakes != 0) {
+                        mensagem += "Venda " + cont + " - <img src='https://www.receiteria.com.br/wp-content/uploads/receitas-de-cupcake-01.jpg' height='100px' width='100px'> - " + valorCupcakes.toLocaleString("pt-BR", {style:"currency", currency:"BRL"}) + "<br><br>";
+                        contCupcakes--;
+                    }
+                    else if (qtdCheesecakes != 0) {
+                        mensagem += "Venda " + cont + " - <img src='https://cozinhaglobo.com.br/wp-content/uploads/2023/06/receita-de-cheesecake-de-morango.jpg' height='100px' width='100px'> - " + valorCheesecakes.toLocaleString("pt-BR", {style:"currency", currency:"BRL"}) + "<br><br>";
+                        contCheesecakes--;
+                    }
+                    cont++;
+                }
+
+                mensagem += "Com a quantidade de " + qtdMacarons + " Macarons, " + qtdBrigadeiros + " Brigadeiros, " + qtdCupcakes + " Cupcakes e " + qtdCheesecakes + " Cheesecakes, a venda totalizará " + venda.toLocaleString("pt-BR", {style:"currency", currency:"BRL"});
+
+                div_mensagem.innerHTML = mensagem;
+            }
+        }
+    </script>
+</body>
+</html>
